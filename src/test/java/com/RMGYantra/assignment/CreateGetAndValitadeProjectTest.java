@@ -11,64 +11,63 @@ import java.sql.Statement;
 import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
+import com.Rmgyantra.javaUtility.EndPoint;
+import com.Rmgyantra.javaUtility.RandomNum;
 import com.mysql.cj.jdbc.Driver;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
+import pojoImplement.POJOClass;
 
 public class CreateGetAndValitadeProjectTest {
 	@Test
 	public void createGetAndValidateProjectTest() throws Throwable
 	{
-		JSONObject jobj=new JSONObject();
-		jobj.put("createdBy", "Sagar");
-		jobj.put("projectName", "sdet_78");
-		jobj.put("status", "created");
-		jobj.put("teamSize", 13);
+
+		RandomNum ran=new RandomNum();
+		POJOClass p=new POJOClass("swarna", "sdet"+ran.randomNum(), "completed", 20);
+	
 		
-		given()
+		 Response res = given()
 		.contentType(ContentType.JSON)
-		.body(jobj)
+		.body(p)
 		.when()
-		.post("http://localhost:8084/addProject")
-		.then().log().all();
+		.post("http://localhost:8084"+EndPoint.addPro);
 		
+		String projectId=res.jsonPath().get("projectId");
 		
-		Response res = when().get("http://localhost:8084/projects");
-		String proId = res.jsonPath().get("[4].projectId");
-		System.out.println("project id is : "+proId);
+		Response resp = given()
+		.pathParam("proid", projectId)
+		.when()
+		.get("http://localhost:8084"+EndPoint.getSinPro);
 		
-		Connection con=null;
-		try {
+		String projectname = resp.jsonPath().get("projectName");
+		System.out.println(projectname);
+				
 		Driver d=new Driver();
 		DriverManager.registerDriver(d);
 		
-	    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects", "root", "root");
+	    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects", "root", "root");
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery("select * from project;");
 		
 	    while(rs.next())
 	    {
-	    	if(rs.getString(1).equals(proId))
+	    	if(rs.getString(4).equals(projectname))
 	    	{
 	    		System.out.println("project is available in DB");
 	    		break;
 	    	}
 	    }
-		
+		con.close();
 
 		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			con.close();
-			System.out.println("Connection is closed");
-		}
 		
 		
 		
 		
-	}
+		
+	
 
 }
