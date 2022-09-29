@@ -2,15 +2,23 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="7009" started-at="2022-09-28T12:17:49Z" finished-at="2022-09-28T12:17:56Z">
+  <suite name="Default suite" duration-ms="6395" started-at="2022-09-29T13:26:35 IST" finished-at="2022-09-29T13:26:42 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="7009" started-at="2022-09-28T12:17:49Z" finished-at="2022-09-28T12:17:56Z">
+    <test name="Default test" duration-ms="6395" started-at="2022-09-29T13:26:35 IST" finished-at="2022-09-29T13:26:42 IST">
       <class name="com.RMGYantra.assignment.CreateGetAndValitadeProjectTest">
-        <test-method status="PASS" signature="createGetAndValidateProjectTest()[pri:0, instance:com.RMGYantra.assignment.CreateGetAndValitadeProjectTest@7f010382]" name="createGetAndValidateProjectTest" duration-ms="6856" started-at="2022-09-28T12:17:49Z" finished-at="2022-09-28T12:17:56Z">
+        <test-method status="PASS" signature="connWithDB()[pri:0, instance:com.RMGYantra.assignment.CreateGetAndValitadeProjectTest@1a3869f4]" name="connWithDB" is-config="true" duration-ms="504" started-at="2022-09-29T13:26:35 IST" finished-at="2022-09-29T13:26:35 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- connWithDB -->
+        <test-method status="PASS" signature="createGetAndValidateProjectTest()[pri:0, instance:com.RMGYantra.assignment.CreateGetAndValitadeProjectTest@1a3869f4]" name="createGetAndValidateProjectTest" duration-ms="6255" started-at="2022-09-29T13:26:36 IST" finished-at="2022-09-29T13:26:42 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createGetAndValidateProjectTest -->
+        <test-method status="PASS" signature="closeConnWithDB()[pri:0, instance:com.RMGYantra.assignment.CreateGetAndValitadeProjectTest@1a3869f4]" name="closeConnWithDB" is-config="true" duration-ms="15" started-at="2022-09-29T13:26:42 IST" finished-at="2022-09-29T13:26:42 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeConnWithDB -->
       </class> <!-- com.RMGYantra.assignment.CreateGetAndValitadeProjectTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
