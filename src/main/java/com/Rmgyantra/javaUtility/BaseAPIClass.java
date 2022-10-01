@@ -5,8 +5,7 @@ import org.testng.annotations.BeforeSuite;
 
 public class BaseAPIClass {
 	public DataBaseUtility dUtil=new DataBaseUtility();
-
-	@BeforeSuite
+	@BeforeSuite	
 	public void connWithDB() throws Throwable
 	{
 		System.out.println("Connect With database ");
